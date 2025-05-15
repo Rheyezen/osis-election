@@ -3,99 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman Voting</title>
+  <title>Login Pemilu OSIS</title>
   <style>
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
     }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #1976d2;
-      color: white;
+    .banner {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-image: url('banner-login.jpg'); /* Ganti dengan gambar kamu */
+      background-size: cover;
+      background-position: center;
     }
 
-    .menu-toggle {
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: none;
-      flex-direction: column;
-      background-color: #f1f1f1;
-      padding: 10px 20px;
-    }
-
-    .menu a {
-      padding: 10px 0;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .candidates {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .container {
       padding: 20px;
     }
 
-    .candidate {
-      width: 100%;
-      max-width: 100%;
-      aspect-ratio: 9 / 16;
-      background-color: #eee;
-      background-size: cover;
-      background-position: center;
-      border-radius: 10px;
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
     }
 
-    @media (min-width: 768px) {
-      .candidates {
-        flex-direction: row;
-        justify-content: space-around;
-      }
+    p {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1976d2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #135ba1;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div id="student-name">Nama Siswa</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  </div>
+  <!-- Banner Top -->
+  <div class="banner"></div>
 
-  <div class="menu" id="dropdown-menu">
-    <a href="#about">Tentang Kami</a>
-    <a href="#results">Cek Hasil</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Kontak</a>
-  </div>
+  <!-- Form Section -->
+  <div class="container">
+    <h1>Selamat Datang di Pemilihan Ketua OSIS</h1>
+    <p>Masukkan NISN dan password yang diberikan</p>
 
-  <div class="candidates">
-    <div class="candidate" style="background-image: url('calon1.jpg');"></div>
-    <div class="candidate" style="background-image: url('calon2.jpg');"></div>
-    <div class="candidate" style="background-image: url('calon3.jpg');"></div>
+    <form id="login-form">
+      <label for="nisn">NISN:</label>
+      <input type="text" id="nisn" name="nisn" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Masuk</button>
+    </form>
   </div>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('dropdown-menu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-    const namaLengkap = sessionStorage.getItem("namaLengkap");
-    if (namaLengkap) {
-      document.getElementById("student-name").innerText = namaLengkap;
-    }
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const nisn = document.getElementById("nisn").value;
+      const password = document.getElementById("password").value;
+
+      alert(`NISN: ${nisn}\nPassword: ${password}`);
+
+      // nanti akan diganti jadi fetch ke Google Apps Script
+    });
   </script>
 
 </body>
