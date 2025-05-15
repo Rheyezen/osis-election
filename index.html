@@ -2,30 +2,101 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Pemilihan Ketua OSIS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Voting</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1976d2;
+      color: white;
+    }
+
+    .menu-toggle {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #f1f1f1;
+      padding: 10px 20px;
+    }
+
+    .menu a {
+      padding: 10px 0;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .candidates {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .candidate {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 9 / 16;
+      background-color: #eee;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .candidates {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Website Pemilihan Ketua OSIS Periode 2025/2026</h1>
-  <p>Silakan verifikasi dengan Nama Lengkap dan NISN Anda</p>
 
-  <form id="login-form">
+  <div class="header">
+    <div id="student-name">Nama Siswa</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </div>
 
-    <label for="name">Nama Lengkap:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
+  <div class="menu" id="dropdown-menu">
+    <a href="#about">Tentang Kami</a>
+    <a href="#results">Cek Hasil</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Kontak</a>
+  </div>
 
-    <label for="nisn">NISN:</label><br>
-    <input type="text" id="nisn" name="nisn" required><br><br>
-
-    <button type="submit">Masuk</button>
-  </form>
+  <div class="candidates">
+    <div class="candidate" style="background-image: url('calon1.jpg');"></div>
+    <div class="candidate" style="background-image: url('calon2.jpg');"></div>
+    <div class="candidate" style="background-image: url('calon3.jpg');"></div>
+  </div>
 
   <script>
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const nisn = document.getElementById("nisn").value;
-      const name = document.getElementById("name").value;
-      alert(`Anda memasukkan NISN: ${nisn} dan Nama: ${name}`);
-    });
+    function toggleMenu() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+    const namaLengkap = sessionStorage.getItem("namaLengkap");
+    if (namaLengkap) {
+      document.getElementById("student-name").innerText = namaLengkap;
+    }
   </script>
+
 </body>
 </html>
