@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Pemilu OSIS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemilihan Ketua OSIS 2025/2026</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,38 +12,46 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f2f2f2;
     }
 
+    /* Banner */
     .banner {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-image: url('banner-login.jpg'); /* Ganti dengan gambar kamu */
+      background-image: url('banner-login.jpg'); /* Ganti sesuai gambar kamu */
       background-size: cover;
       background-position: center;
+      background-color: #ccc; /* fallback jika gambar gagal */
     }
 
     .container {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h1 {
+      font-size: 24px;
       text-align: center;
+      margin-top: 20px;
       margin-bottom: 10px;
     }
 
     p {
       text-align: center;
       margin-bottom: 30px;
+      color: #444;
     }
 
     form {
+      width: 100%;
       max-width: 400px;
-      margin: 0 auto;
-      background: white;
+      background-color: #fff;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     label {
@@ -58,57 +66,59 @@
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 16px;
     }
 
     button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background-color: #1976d2;
       color: white;
+      font-size: 16px;
       font-weight: bold;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     button:hover {
-      background-color: #135ba1;
+      background-color: #145ea8;
     }
   </style>
 </head>
 <body>
 
-  <!-- Banner Top -->
+  <!-- Banner atas -->
   <div class="banner"></div>
 
-  <!-- Form Section -->
+  <!-- Konten dan Form -->
   <div class="container">
-    <h1>Selamat Datang di Pemilihan Ketua OSIS</h1>
-    <p>Masukkan NISN dan password yang diberikan</p>
+    <h1>Pemilihan Ketua OSIS Periode 2025/2026</h1>
+    <p>Masukkan NISN dan password Anda sesuai kartu yang diberikan panitia.</p>
 
     <form id="login-form">
       <label for="nisn">NISN:</label>
-      <input type="text" id="nisn" name="nisn" required>
+      <input type="text" id="nisn" name="nisn" required />
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" name="password" required />
 
       <button type="submit">Masuk</button>
     </form>
   </div>
 
   <script>
-    document.getElementById("login-form").addEventListener("submit", function(event) {
+    document.getElementById("login-form").addEventListener("submit", function (event) {
       event.preventDefault();
       const nisn = document.getElementById("nisn").value;
       const password = document.getElementById("password").value;
 
       alert(`NISN: ${nisn}\nPassword: ${password}`);
 
-      // nanti akan diganti jadi fetch ke Google Apps Script
+      // Nanti diganti jadi fetch() ke Google Sheets Apps Script untuk verifikasi
     });
   </script>
-
 </body>
 </html>
