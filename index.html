@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>OSIS Election</title>
+  <title>Pemilihan Ketua OSIS</title>
 </head>
 <body>
-  <h1>Welcome to the OSIS Election Website</h1>
-  <p>Only verified students can vote once using their NISN and full name.</p>
+  <h1>Website Pemilihan Ketua OSIS Periode 2025/2026</h1>
+  <p>Silakan verifikasi dengan Nama Lengkap dan NISN Anda</p>
 
   <form id="login-form">
+
+    <label for="name">Nama Lengkap:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
     <label for="nisn">NISN:</label><br>
     <input type="text" id="nisn" name="nisn" required><br><br>
 
-    <label for="name">Full Name:</label><br>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <button type="submit">Login</button>
+    <button type="submit">Masuk</button>
   </form>
 
   <script>
@@ -23,7 +24,7 @@
       event.preventDefault();
       const nisn = document.getElementById("nisn").value;
       const name = document.getElementById("name").value;
-      alert(`You entered NISN: ${nisn} and Name: ${name}`);
+      alert(`Anda memasukkan NISN: ${nisn} dan Nama: ${name}`);
     });
   </script>
 </body>
